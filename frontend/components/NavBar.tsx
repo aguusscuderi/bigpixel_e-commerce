@@ -78,7 +78,7 @@ const NavBar = () => {
               <a className="navLink" href="/api/productos">Contactame</a>
             </li>
             <li className="flex__li-item">
-              <a className="navLink" href="/signin">Inicia Sesion</a>
+              <a className="navLink" href="/signin">Inicia Sesión</a>
             </li>
             {/* {
               auth.status == true && auth.user.role == "admin" ?  
