@@ -1,11 +1,10 @@
 // import Image from "next/image";
 // import Widgets from "./Widgets";
-import React from "react";
-import { useState } from "react";
+// import React from "react";
 // import { Menu, MenuItem } from "@mui/material";
 // import { useSelector } from "react-redux";
 // import { State } from 'global/store'
-import { useEffect } from "react";
+import { useState } from "react";
 
 const NavBar = () => {
   // const auth = useSelector((state: State) => state.auth)
@@ -14,15 +13,15 @@ const NavBar = () => {
 
   const open = Boolean(anchorEl);
 
-  function handleClick(event: { currentTarget: React.SetStateAction<null>; }) {
-    if (anchorEl !== event.currentTarget) {
-      setAnchorEl(event.currentTarget);
-    }
-  }
+  // function handleClick(event: { currentTarget: React.SetStateAction<null>; }) {
+  //   if (anchorEl !== event.currentTarget) {
+  //     setAnchorEl(event.currentTarget);
+  //   }
+  // }
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  // const handleClose = () => {
+  //   setAnchorEl(null);
+  // };
 
 
   const slide = (e: any) => {
@@ -66,8 +65,8 @@ const NavBar = () => {
             </li>
             <li className="flex__li-item">
               <a className="navLink" href="/api/productos" 
-              onClick={handleClick}
-              onMouseOver={handleClick} 
+              // onClick={handleClick}
+              // onMouseOver={handleClick} 
               aria-controls={open ? 'turnos-menu' : undefined}
               aria-haspopup="true"
               aria-expanded={open ? 'true' : undefined}>
