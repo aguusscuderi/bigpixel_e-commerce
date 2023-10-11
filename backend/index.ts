@@ -12,7 +12,7 @@ const server = new HttpServer(app)
 
 serverRouter(app)
 
-const PORT = 5000
+const PORT = process.env.PORT || 5000
 
 app.get('/:params', (req: Request, res: Response) => {
     const notFound = {
