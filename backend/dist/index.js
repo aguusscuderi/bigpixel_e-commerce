@@ -14,7 +14,7 @@ app.use(express_1.default.urlencoded({ extended: true }));
 const { Server: HttpServer } = require('http');
 const server = new HttpServer(app);
 (0, index_1.default)(app);
-(0, database_1.authenticate)()
+(0, database_1.db_sync)()
     .then(() => {
     // Sincroniza el modelo Usuario con la base de datos
     return user_1.default.sync();
@@ -25,13 +25,6 @@ const server = new HttpServer(app);
     .catch((error) => {
     console.error('Error al sincronizar o crear la tabla:', error);
 });
-// authenticate.sync()
-//   .then(() => {
-//     console.log('Modelo sincronizado con la base de datos');
-//   })
-//   .catch((error) => {
-//     console.error('Error al sincronizar el modelo:', error);
-//   });
 const PORT = process.env.PORT || 5000;
 app.get('/:params', (req, res) => {
     const notFound = {

@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 require('dotenv').config()
 const app = express()
 
-import { authenticate } from './config/database';
+import { db_sync } from './config/database';
 import Usuario from './models/user';
 
 import serverRouter from './routes/index'
@@ -15,24 +15,17 @@ const server = new HttpServer(app)
 
 serverRouter(app)
 
-authenticate()
-.then(() => {
-    // Sincroniza el modelo Usuario con la base de datos
-    return Usuario.sync();
-  })
+db_sync()
   .then(() => {
-    console.log('Tabla "users" creada o sincronizada exitosamente');
-  })
-  .catch((error) => {
-    console.error('Error al sincronizar o crear la tabla:', error);
-  });
-// authenticate.sync()
-//   .then(() => {
-//     console.log('Modelo sincronizado con la base de datos');
-//   })
-//   .catch((error) => {
-//     console.error('Error al sincronizar el modelo:', error);
-//   });
+      // Sincroniza el modelo Usuario con la base de datos
+      return Usuario.sync();
+    })
+    .then(() => {
+      console.log('Tabla "users" creada o sincronizada exitosamente');
+    })
+    .catch((error) => {
+      console.error('Error al sincronizar o crear la tabla:', error);
+    });
 
 const PORT = process.env.PORT || 5000
 

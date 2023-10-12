@@ -9,13 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.db = exports.authenticate = void 0;
+exports.db = exports.db_sync = void 0;
 const sequelize_1 = require("sequelize");
 require('dotenv').config();
 console.log('Intentando conectar a:', process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD);
 const db = new sequelize_1.Sequelize("postgres://BIGPIXELUSER:bigpixel2023@postgresdb:5432/BIGPIXELDB");
 exports.db = db;
-const authenticate = () => __awaiter(void 0, void 0, void 0, function* () {
+const db_sync = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield db.authenticate();
         console.log("Connection has been established successfully.");
@@ -24,5 +24,5 @@ const authenticate = () => __awaiter(void 0, void 0, void 0, function* () {
         console.error("Unable to connect to the database:", error);
     }
 });
-exports.authenticate = authenticate;
+exports.db_sync = db_sync;
 // export default db

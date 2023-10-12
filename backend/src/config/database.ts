@@ -5,7 +5,7 @@ console.log('Intentando conectar a:', process.env.DB_NAME, process.env.DB_USER, 
 
 const db = new Sequelize("postgres://BIGPIXELUSER:bigpixel2023@postgresdb:5432/BIGPIXELDB");
 
-const authenticate = async () => {
+const db_sync = async () => {
     try {
       await db.authenticate();
       console.log("Connection has been established successfully.");
@@ -14,5 +14,5 @@ const authenticate = async () => {
     }
   };
 
-export {authenticate, db}
+export {db_sync, db}
 // export default db

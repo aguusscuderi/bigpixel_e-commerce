@@ -24,11 +24,11 @@ Usuario.init({
     modelName: 'users', // Nombre de la tabla en la base de datos
 });
 // Sincroniza el modelo con la base de datos para crear la tabla
-Usuario.sync()
-    .then(() => {
-    console.log('Tabla "users" creada exitosamente');
-})
-    .catch((error) => {
-    console.error('Error al crear la tabla:', error);
-});
+// Usuario.sync()
+//   .then(() => {
+//     console.log('Tabla "users" creada exitosamente');
+//   })
+//   .catch((error) => {
+//     console.error('Error al crear la tabla:', error);
+//   });
 exports.default = Usuario;

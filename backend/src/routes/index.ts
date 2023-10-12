@@ -5,7 +5,7 @@ const router = Router()
     app.use('/api', router)
 
     router.get('/raiz', (_req: Request, res: Response) => {
-        res.send('En la raiz API. Probando cambios')
+        res.send('En la raiz API. Funciona NODEMON en Docker :D.')
     })
 }
 
