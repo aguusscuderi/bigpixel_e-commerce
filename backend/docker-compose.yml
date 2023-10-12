@@ -19,6 +19,7 @@ services:
       context: . # Ruta a la carpeta del backend
     ports:
       - "4040:4040" # Puedes ajustar el puerto según tu aplicación
+    # command: npm run dev
     depends_on:
       - postgresdb
     environment:
@@ -28,7 +29,8 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_DB=${DB_NAME}
     volumes:
-      - .:/project
+      - .:/app
+    # command: ["npx", "nodemon", "index.ts"]
 
 volumes:
   db-data:

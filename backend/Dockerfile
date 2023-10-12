@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . .
 
 # Instala TypeScript globalmente
-RUN npm install -g typescript
+RUN npm install -g typescript nodemon
 
 # Instala las dependencias
 RUN npm install

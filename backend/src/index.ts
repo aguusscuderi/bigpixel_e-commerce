@@ -2,10 +2,10 @@ import express, { Request, Response } from 'express';
 require('dotenv').config()
 const app = express()
 
-import { authenticate } from './src/config/database';
-import Usuario from './src/models/user';
+import { authenticate } from './config/database';
+import Usuario from './models/user';
 
-import serverRouter from './routes/index';
+import serverRouter from './routes/index'
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
