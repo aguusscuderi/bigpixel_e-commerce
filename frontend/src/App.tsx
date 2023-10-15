@@ -1,17 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// import  React  from 'react'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
 import './App.css'
-import NavBar from '../components/NavBar'
-import Carrousel from '../components/Carrousel'
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Index from '../pages/index'
+import Signin from '../pages/signin'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-    <NavBar/>
-     <Carrousel></Carrousel>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Index></Index>}></Route>
+        <Route path="/signin" element={<Signin></Signin>}></Route>
+      </Routes>
+    </BrowserRouter>
     </>
   )
 }

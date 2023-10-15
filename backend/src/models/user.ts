@@ -1,6 +1,5 @@
 import { db } from '../config/database';
-
-import { DataTypes, Model, Sequelize } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 
 class Usuario extends Model {
   public id!: number;
