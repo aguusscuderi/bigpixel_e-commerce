@@ -20,7 +20,7 @@ const Modal = ({ show, onClose }: Props) => {
             <div className="modal">
                 <div className="header">
                     <Form/>
-                    <button onClick={ onClose() } className="btn close-btn"> Close </button>
+                    <button onClick={onClose()} className="btn close-btn"> Close </button>
                 </div>
             </div>
         </div>

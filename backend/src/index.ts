@@ -3,7 +3,9 @@ require('dotenv').config()
 const app = express()
 
 import { db_sync } from './config/database';
+
 import Usuario from './models/user';
+import Products from './models/products';
 
 import serverRouter from './routes/index'
 
@@ -18,10 +20,11 @@ serverRouter(app)
 db_sync()
   .then(() => {
       // Sincroniza el modelo Usuario con la base de datos
-      return Usuario.sync();
+      const tables = [Usuario, Products]
+      return tables.forEach(el => el.sync());
     })
     .then(() => {
-      console.log('Tabla "users" creada o sincronizada exitosamente');
+      console.log('Tablas "users" creada o sincronizada exitosamente');
     })
     .catch((error) => {
       console.error('Error al sincronizar o crear la tabla:', error);
