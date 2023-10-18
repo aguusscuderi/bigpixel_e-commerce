@@ -27,6 +27,7 @@ nav .user_info i {
     cursor: pointer;
     font-size: 25px;
 }
+
 @media screen and (min-width: 768px) {
     nav .user_info i {
         color: #a6d372;

@@ -5,12 +5,14 @@
 // import { useSelector } from "react-redux";
 // import { State } from 'global/store'
 import { useState } from "react";
+import Modal from './popUp'
+
 
 const NavBar = () => {
   // const auth = useSelector((state: State) => state.auth)
 
   const[anchorEl, setAnchorEl] = useState(null);
-
+  const [showModal, setShowModal] = useState(false)
   const open = Boolean(anchorEl);
 
   // function handleClick(event: { currentTarget: React.SetStateAction<null>; }) {
@@ -46,6 +48,11 @@ const NavBar = () => {
       e.currentTarget.classList.toggle("toggle");
     }
   };
+
+  const handlePopUpToggle = () => {
+    setShowModal(!showModal);
+  };
+
   return (
     <>
       <nav>
@@ -77,7 +84,8 @@ const NavBar = () => {
               <a className="navLink" href="/api/productos">Contactame</a>
             </li>
             <li className="flex__li-item">
-              <a className="navLink" href="/signin">Inicia Sesión</a>
+              <a className="navLink" onClick={() => setShowModal(true)}>Inicia Sesión</a>
+              <Modal show={showModal} onClose={() => handlePopUpToggle}></Modal>
             </li>
             {/* {
               auth.status == true && auth.user.role == "admin" ?  
@@ -108,3 +116,6 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+
+

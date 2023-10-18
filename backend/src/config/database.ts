@@ -14,5 +14,5 @@ const db_sync = async () => {
     }
   };
 
-export {db_sync, db}
+export { db_sync, db }
 // export default db
