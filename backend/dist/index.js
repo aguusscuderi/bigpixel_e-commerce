@@ -8,6 +8,7 @@ require('dotenv').config();
 const app = (0, express_1.default)();
 const database_1 = require("./config/database");
 const user_1 = __importDefault(require("./models/user"));
+const products_1 = __importDefault(require("./models/products"));
 const index_1 = __importDefault(require("./routes/index"));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
@@ -17,10 +18,11 @@ const server = new HttpServer(app);
 (0, database_1.db_sync)()
     .then(() => {
     // Sincroniza el modelo Usuario con la base de datos
-    return user_1.default.sync();
+    const tables = [user_1.default, products_1.default];
+    return tables.forEach(el => el.sync());
 })
     .then(() => {
-    console.log('Tabla "users" creada o sincronizada exitosamente');
+    console.log('Tablas "users" creada o sincronizada exitosamente');
 })
     .catch((error) => {
     console.error('Error al sincronizar o crear la tabla:', error);

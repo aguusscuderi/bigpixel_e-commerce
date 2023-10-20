@@ -86,8 +86,6 @@ export function shoppingCartReducer (state = initialState, action: Action) {
                 }
         }
      
-            
-    
         case ActionTypes.CLEARCART:{
             return {
                 cart: {...initialState.cart},

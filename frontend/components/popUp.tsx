@@ -19,9 +19,9 @@ const Modal = ({ show, onClose }: Props) => {
         <div className="overlay">
             <div className="modal">
                 <div className="header">
-                    <Form/>
                     <button onClick={onClose()} className="btn close-btn"> Close </button>
                 </div>
+                <Form/>
             </div>
         </div>
     ) : null;
