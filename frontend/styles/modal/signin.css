@@ -1,0 +1,10 @@
+.signin_form-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.signin-inputs {
+    display: flex;
+    flex-direction: column;
+}

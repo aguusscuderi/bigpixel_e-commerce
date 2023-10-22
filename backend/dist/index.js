@@ -3,9 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = __importDefault(require("express"));
 require('dotenv').config();
+const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
+const cors = require('cors');
 const database_1 = require("./config/database");
 const user_1 = __importDefault(require("./models/user"));
 const products_1 = __importDefault(require("./models/products"));
@@ -14,6 +15,19 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 const { Server: HttpServer } = require('http');
 const server = new HttpServer(app);
+const whitelist = ['http://localhost:5173'];
+const corsConfig = {
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true);
+        }
+        else {
+            callback(new Error('Not allowed'));
+        }
+    },
+    credentials: true
+};
+app.use(cors(corsConfig));
 (0, index_1.default)(app);
 (0, database_1.db_sync)()
     .then(() => {

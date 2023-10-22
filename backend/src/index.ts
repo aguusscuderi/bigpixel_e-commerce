@@ -1,6 +1,7 @@
-import express, { Request, Response } from 'express';
 require('dotenv').config()
+import express, { Request, Response } from 'express';
 const app = express()
+const cors = require('cors')
 
 import { db_sync } from './config/database';
 
@@ -14,6 +15,19 @@ app.use(express.urlencoded({extended: true}))
 
 const {Server : HttpServer} = require('http')
 const server = new HttpServer(app)
+
+const whitelist = ['http://localhost:5173']
+const corsConfig = {
+    origin: function(origin: any, callback: any) {
+        if (whitelist.indexOf(origin) !== -1){
+            callback(null, true)
+        }else{
+            callback(new Error('Not allowed'))
+        }
+    },
+    credentials: true
+}
+app.use(cors(corsConfig))
 
 serverRouter(app)
 

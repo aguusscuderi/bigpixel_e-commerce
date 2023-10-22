@@ -7,6 +7,10 @@ function serverRouter(app) {
     router.get('/raiz', (_req, res) => {
         res.send('En la raiz API. Funciona NODEMON en Docker :D.');
     });
+    router.post('/login', (_req, res) => {
+        const { email, password } = _req.params;
+        res.send(`Email: ${email}, Password: ${password}`);
+    });
 }
 exports.default = serverRouter;
 // module.exports = serverRouter
