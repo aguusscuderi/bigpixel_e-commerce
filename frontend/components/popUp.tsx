@@ -1,6 +1,7 @@
 import { useState, useEffect} from "react";
 import { createPortal } from "react-dom";
 import Form from './Login/form'
+import Register from './Register/index'
 import '../styles/modal.css'; 
 
 interface Props {
@@ -22,6 +23,7 @@ const Modal = ({ show, onClose }: Props) => {
                     <button onClick={onClose()} className="btn close-btn"> Close </button>
                 </div>
                 <Form/>
+                <Register/>
             </div>
         </div>
     ) : null;

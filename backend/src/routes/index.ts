@@ -1,6 +1,8 @@
 import { Express, Router, Request, Response } from 'express';
 const router = Router()
 
+import register from '../auth/register'
+
  export default function serverRouter(app: Express) {
     app.use('/api', router)
 
@@ -8,11 +10,16 @@ const router = Router()
         res.send('En la raiz API. Funciona NODEMON en Docker :D.')
     })
     
-    router.post('/login', (_req: Request, res: Response) => {
-        const { email, password } = _req.body
-        console.log(_req.body)
+    router.post('/login', (req: Request, res: Response) => {
+        const { email, password } = req.body
+        console.log(req.body)
         console.log(`Email: ${email}, Password: ${password}`)
         res.send(`Email: ${email}, Password: ${password}`)
+    })
+
+    router.post('/register', (req: Request, res: Response) => {
+        const { email, password, name } = req.body
+        register(email, password)
     })
 }
 

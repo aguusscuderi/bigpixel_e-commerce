@@ -10,7 +10,7 @@ Usuario.init({
         autoIncrement: true,
         primaryKey: true,
     },
-    nombre: {
+    name: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
@@ -18,6 +18,19 @@ Usuario.init({
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
         unique: true,
+    },
+    password: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+    },
+    role: {
+        type: sequelize_1.DataTypes.STRING,
+        defaultValue: 'user'
+    },
+    root: {
+        type: sequelize_1.DataTypes.BOOLEAN,
+        defaultValue: false
     },
 }, {
     sequelize: database_1.db,

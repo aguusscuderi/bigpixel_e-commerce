@@ -15,10 +15,12 @@ const Form = () => {
 
     const handleSubmit = async (e: { preventDefault: () => void }) => {
         e.preventDefault();
-        await postData('login', datosLogin)
+        const myData = await postData('login', datosLogin)
+        console.log(myData, 'BACKEND RESPONSE.')
     }
 
     return (
+        <>
         <div className="signin_form-container">
             <h2 className="signin_h2"> Sigin in! </h2>
             <div className="signin-inputs">
@@ -37,6 +39,7 @@ const Form = () => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

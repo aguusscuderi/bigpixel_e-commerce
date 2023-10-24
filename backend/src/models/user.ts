@@ -3,9 +3,14 @@ import { DataTypes, Model } from 'sequelize';
 
 class Usuario extends Model {
   public id!: number;
-  public nombre!: string;
-  public email!: string;
+  public name!: string;
+  public email!: string ;
+  public password!: string;
+  public role!: string;
+  public root!: string;
 }
+
+
 
 Usuario.init(
   {
@@ -14,7 +19,7 @@ Usuario.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    nombre: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -22,6 +27,19 @@ Usuario.init(
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    }, 
+    role: {
+      type: DataTypes.STRING,
+      defaultValue: 'user'
+    },
+    root: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     },
   },
   {

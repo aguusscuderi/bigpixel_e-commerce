@@ -26,12 +26,13 @@ const baseUrl = 'http://localhost:4040'
 // }
 
 export const postData = async (url: string, post: any, token?: string) => {
+  const headers: HeadersInit = new Headers();
+  headers.set('Content-Type', 'application/json');
+  headers.set('Authorization', 'Bearer ' + token);
+
   const res = await fetch(`${baseUrl}/api/${url}`, {
       method: 'POST',
-      /*headers: {
-          'Content-Type': 'application/json',
-          'Authorization': token
-      },*/
+      headers,
       body: JSON.stringify(post)
   })
 
