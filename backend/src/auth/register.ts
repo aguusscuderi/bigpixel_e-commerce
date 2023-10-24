@@ -6,8 +6,6 @@ const register = async (req: { body: { name: string; email: string; password: st
     try {
       const { name, email, password } = req.body;
   
-      console.log(req.body, "le di a la ruta")
-  
       // const errMsg = valid(name, email, password, cf_password);
       // if (errMsg) return res.status(400).json({ err: errMsg });
   

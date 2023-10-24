@@ -10,7 +10,6 @@ const Form = () => {
     const handleLoginChange = (e: { target: { name: any; value: string } }) => {
         const {name, value} = e.target
         setDatosLogin({...datosLogin, [name]:value})
-        console.log(datosLogin)
     }
 
     const handleSubmit = async (e: { preventDefault: () => void }) => {

@@ -2,6 +2,7 @@ import { Express, Router, Request, Response } from 'express';
 const router = Router()
 
 import register from '../auth/register'
+import login from '../auth/login'
 
  export default function serverRouter(app: Express) {
     app.use('/api', router)
@@ -11,15 +12,11 @@ import register from '../auth/register'
     })
     
     router.post('/login', (req: Request, res: Response) => {
-        const { email, password } = req.body
-        console.log(req.body)
-        console.log(`Email: ${email}, Password: ${password}`)
-        res.send(`Email: ${email}, Password: ${password}`)
+        login(req, res)
     })
 
     router.post('/register', (req: Request, res: Response) => {
-        const { email, password, name } = req.body
-        register(email, password)
+        register(req, res)
     })
 }
 
