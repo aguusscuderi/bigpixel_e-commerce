@@ -10,7 +10,11 @@ const register = async (req: { body: { name: string; email: string; password: st
       // if (errMsg) return res.status(400).json({ err: errMsg });
   
       const user = await Users.findOne({ where: {email: email} });
-      if (user) return res.status(400).json({ err: "This email already exists." });
+      if (user) {
+        console.log('El usuario ya existe.')
+        return res.status(400).json({ err: "This email already exists." });
+      }
+
   
       const passwordHash = await bcrypt.hash(password, 10);
   
@@ -21,7 +25,9 @@ const register = async (req: { body: { name: string; email: string; password: st
       });
   
       await newUser.save();
+
       res.json({ msg: "Register Success!" });
+      
     } catch (err) {
       return res.status(500).json({ err: err });
     }

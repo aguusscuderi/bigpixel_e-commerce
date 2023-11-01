@@ -24,26 +24,26 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const user = yield user_1.default.findOne({ where: { email: email } });
         if (!user)
             return res.status(400).json({ err: "This user does not exist." });
-        //let isMatch = await bcrypt.compare(password, user.password);
-        const isMatch = yield isValidPswd(user, password);
-        console.log(isMatch);
+        const isMatch = yield isValidPswd(user.dataValues, password);
         if (!isMatch)
             return res.status(400).json({ err: "Incorrect password." });
-        const access_token = (0, generateToken_1.createAccessToken)({ id: user.id });
-        const refresh_token = (0, generateToken_1.createRefreshToken)({ id: user.id });
+        const access_token = (0, generateToken_1.createAccessToken)({ id: user.dataValues.id.toString() });
+        const refresh_token = (0, generateToken_1.createRefreshToken)({ id: user.dataValues.id.toString() });
+        console.log('MI TOKEN: ', access_token);
         res.json({
             msg: "Login Success!",
             refresh_token,
             access_token,
             user: {
-                name: user.name,
-                email: user.email,
-                role: user.role,
-                root: user.root,
+                name: user.dataValues.name,
+                email: user.dataValues.email,
+                role: user.dataValues.role,
+                root: user.dataValues.root,
             },
         });
     }
     catch (err) {
-        return res.status(500).json({ err: err });
+        return res.status(500).json({ error: err });
     }
 });
+exports.default = login;

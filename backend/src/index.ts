@@ -16,18 +16,20 @@ app.use(express.urlencoded({extended: true}))
 const {Server : HttpServer} = require('http')
 const server = new HttpServer(app)
 
-const whitelist = ['http://localhost:5173']
-const corsConfig = {
-    origin: function(origin: any, callback: any) {
-        if (whitelist.indexOf(origin) !== -1){
-            callback(null, true)
-        }else{
-            callback(new Error('Not allowed'))
-        }
-    },
-    credentials: true
-}
-app.use(cors(corsConfig))
+// const whitelist = ['http://localhost:5173', 'http://localhost:4040']
+// const corsConfig = {
+//     origin: function(origin: string, callback: any) {
+//         if (whitelist.indexOf(origin) !== -1){
+//             callback(null, true)
+//         }else{
+//             console.error(`Origin '${origin}' not allowed`);
+//             callback(new Error('Not allowed'));
+//         }
+//     },
+//     credentials: true
+// }
+// app.use(cors(corsConfig))
+app.use(cors('*'))
 
 serverRouter(app)
 

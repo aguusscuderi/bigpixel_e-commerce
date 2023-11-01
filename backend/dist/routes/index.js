@@ -6,21 +6,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const router = (0, express_1.Router)();
 const register_1 = __importDefault(require("../auth/register"));
+const login_1 = __importDefault(require("../auth/login"));
 function serverRouter(app) {
     app.use('/api', router);
-    router.get('/raiz', (_req, res) => {
-        res.send('En la raiz API. Funciona NODEMON en Docker :D.');
-    });
-    router.post('/login', (req, res) => {
-        const { email, password } = req.body;
-        console.log(req.body);
-        console.log(`Email: ${email}, Password: ${password}`);
-        res.send(`Email: ${email}, Password: ${password}`);
-    });
-    router.post('/register', (req, res) => {
-        const { email, password, name } = req.body;
-        (0, register_1.default)(email, password);
-    });
+    // DELETES:
+    // UPDATES:
+    // GETS:
+    // router.get('sessions/oauth/google', googleOAuthHandler())
+    // POSTS: 
+    router.post('/login', (req, res) => { (0, login_1.default)(req, res); });
+    router.post('/register', (req, res) => { (0, register_1.default)(req, res); });
 }
 exports.default = serverRouter;
 // module.exports = serverRouter

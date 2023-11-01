@@ -17,12 +17,13 @@ const bcrypt_1 = __importDefault(require("bcrypt"));
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { name, email, password } = req.body;
-        console.log(req.body, "le di a la ruta");
         // const errMsg = valid(name, email, password, cf_password);
         // if (errMsg) return res.status(400).json({ err: errMsg });
         const user = yield user_1.default.findOne({ where: { email: email } });
-        if (user)
+        if (user) {
+            console.log('El usuario ya existe.');
             return res.status(400).json({ err: "This email already exists." });
+        }
         const passwordHash = yield bcrypt_1.default.hash(password, 10);
         const newUser = new user_1.default({
             name,

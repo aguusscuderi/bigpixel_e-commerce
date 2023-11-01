@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { postData } from '../../utils/fetchData'
+import  getGoogleOAuthURL  from '../../utils/getGoogleUrl'
 
 const Form = () => {
     const [datosLogin, setDatosLogin] = useState({
@@ -30,7 +31,7 @@ const Form = () => {
             </div>
             <div className="signing-form_footer">
                 <div>
-                    <p> Or connect with: Google</p>
+                    <p> Or connect with: <a href={getGoogleOAuthURL()}>Google</a> </p>
                 </div>
                 <div>
                     <p> New to shop? </p>

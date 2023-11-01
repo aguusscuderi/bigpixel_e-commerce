@@ -1,5 +1,7 @@
+import { config } from '../config/index'
+
 // const baseUrl = process.env.BASE_URL;
-const baseUrl = 'http://localhost:4040'
+const baseUrl = config.SERVER_ROOT
 
 // export const getAuth = async (url, header) => {
 //   const res = await fetch(`${baseUrl}/api/${url}`, {
