@@ -7,12 +7,13 @@ const express_1 = require("express");
 const router = (0, express_1.Router)();
 const register_1 = __importDefault(require("../auth/register"));
 const login_1 = __importDefault(require("../auth/login"));
+const session_controller_1 = require("../controllers/auth/session.controller");
 function serverRouter(app) {
     app.use('/api', router);
     // DELETES:
     // UPDATES:
     // GETS:
-    // router.get('sessions/oauth/google', googleOAuthHandler())
+    router.get('/sessions/oauth/google', session_controller_1.googleOAuthHandler);
     // POSTS: 
     router.post('/login', (req, res) => { (0, login_1.default)(req, res); });
     router.post('/register', (req, res) => { (0, register_1.default)(req, res); });

@@ -11,7 +11,11 @@ COPY . .
 RUN npm install -g typescript nodemon
 
 # Instala las dependencias
+RUN npm install --dev bcrypt @types/bcrypt
+
 RUN npm install
+
+RUN apt-get update && apt-get install -y build-essential
 
 # Expón el puerto en el que se ejecuta la aplicación
 EXPOSE 4040

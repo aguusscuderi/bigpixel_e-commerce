@@ -9,10 +9,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.googleOAuthHandler = void 0;
 const user_service_1 = require("../../service/user.service");
 function googleOAuthHandler(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            console.log('Executing GoogleAuthHandler');
             // GET THE CODE FROM QS
             const code = req.query.code;
             const { id_token, access_token } = yield (0, user_service_1.getGoogleOAuthTokens)({ code });
@@ -26,8 +28,8 @@ function googleOAuthHandler(req, res) {
             // REDIRECT TO THE CLIENT
         }
         catch (error) {
-            throw new Error(error.message);
+            console.log('ERROR DESDE SESSION.CONTROLLER', error);
         }
     });
 }
-exports.default = { googleOAuthHandler };
+exports.googleOAuthHandler = googleOAuthHandler;

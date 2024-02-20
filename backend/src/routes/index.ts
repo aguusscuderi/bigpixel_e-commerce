@@ -13,8 +13,6 @@ import { googleOAuthHandler }  from '../controllers/auth/session.controller'
     // UPDATES:
 
     // GETS:
-
-
     router.get('/sessions/oauth/google', googleOAuthHandler)
 
     // POSTS: 

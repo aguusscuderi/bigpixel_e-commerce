@@ -17,23 +17,25 @@ const axios_1 = __importDefault(require("axios"));
 const qs_1 = __importDefault(require("qs"));
 function getGoogleOAuthTokens({ code }) {
     return __awaiter(this, void 0, void 0, function* () {
+        console.log('Executing GoogleAuthTokens');
         const url = "https://oauth2.googleapis.com/token";
         const values = {
             code,
             client_id: process.env.GOOGLE_CLIENT_ID,
-            cient_secret: process.env.GOOGLE_CLIENT_SECRET,
+            client_secret: process.env.GOOGLE_CLIENT_SECRET,
             redirect_uri: process.env.GOOGLE_OAUTH_REDIRECT,
             grant_type: "authorization_code"
         };
         try {
             const res = yield axios_1.default.post(url, qs_1.default.stringify(values), {
                 headers: {
-                    "Content_Type": "application/x-www-form-urlencoded"
+                    "Content-Type": "application/x-www-form-urlencoded"
                 }
             });
             return res.data;
         }
         catch (error) {
+            console.log('ERROR DESDE USER.SERVICE', error.response);
             throw new Error(error.message);
         }
     });
