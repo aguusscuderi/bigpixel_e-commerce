@@ -11,9 +11,10 @@ COPY . .
 RUN npm install -g typescript nodemon
  
 # Instala las dependencias
-RUN npm install --dev bcrypt @types/bcrypt
 
 RUN npm install
+
+RUN npm install bcrypt @types/bcrypt
 
 RUN apt-get update && apt-get install -y build-essential
 
