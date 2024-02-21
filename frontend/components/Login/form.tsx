@@ -1,15 +1,15 @@
 import { useState } from "react"
 import { postData } from '../../utils/fetchData'
 import  getGoogleOAuthURL  from '../../utils/getGoogleUrl'
-// import { setCookie } from "nookies"
-// import { actionCreators, State } from '../../global/store'
-// import {useDispatch, useSelector} from 'react-redux'
-// import { bindActionCreators } from 'redux';
+import { setCookie } from "nookies"
+import { actionCreators, State } from '../../global/store'
+import {useDispatch, useSelector} from 'react-redux'
+import { bindActionCreators } from 'redux';
 
 const Form = () => {
-    // const authStatus = useSelector((state: State) => state.auth)
-    // const dispatch = useDispatch()
-    // const { auth } = bindActionCreators(actionCreators, dispatch)
+    const authStatus = useSelector((state: State) => state.auth)
+    const dispatch = useDispatch()
+    const { auth } = bindActionCreators(actionCreators, dispatch)
 
     const [datosLogin, setDatosLogin] = useState({
         email: '',
@@ -25,19 +25,18 @@ const Form = () => {
         e.preventDefault();
         const myData = await postData('login', datosLogin)
 
-        // setCookie(null, "refresh_token", myData.refresh_token, {
-        //     maxAge: 259200,
-        //     path: 'http://localhost:4040/'
-        // })
-        // setCookie(null, "access_token", myData.access_token, {
-        //     maxAge: 259200,
-        //     path: 'api/auth/accessToken'
-        // })
+        setCookie(null, "refresh_token", myData.refresh_token, {
+            maxAge: 259200,
+            //path: 'http://localhost:4040/'
+        })
+        setCookie(null, "access_token", myData.access_token, {
+            maxAge: 259200,
+            //path: 'api/auth/accessToken'
+        })
 
-        // auth(true, myData.access_token, myData.user)
+        auth(true, myData.access_token, myData.user)
 
         // router.push('/')
-
         console.log(myData, 'BACKEND RESPONSE.')
     }
 

@@ -9,7 +9,7 @@ COPY . .
 
 # Instala TypeScript globalmente
 RUN npm install -g typescript nodemon
-
+ 
 # Instala las dependencias
 RUN npm install --dev bcrypt @types/bcrypt
 

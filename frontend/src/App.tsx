@@ -3,18 +3,25 @@
 // import viteLogo from '/vite.svg'
 import './App.css'
 import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { Provider } from 'react-redux'
+import { store, persist } from '../global/store/index'
+import {PersistGate} from 'redux-persist/integration/react'
 import Index from '../pages/index'
 import Signin from '../pages/signin'
 
 function App() {
   return (
     <>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Index></Index>}></Route>
-        <Route path="/signin" element={<Signin></Signin>}></Route>
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <PersistGate persistor={persist}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index></Index>}></Route>
+            <Route path="/signin" element={<Signin></Signin>}></Route>
+          </Routes>
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
     </>
   )
 }
