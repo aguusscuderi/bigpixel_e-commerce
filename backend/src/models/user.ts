@@ -4,13 +4,12 @@ import { DataTypes, Model } from 'sequelize';
 class Usuario extends Model {
   public id!: number;
   public name!: string;
-  public email!: string ;
+  public email!: string;
   public password!: string;
   public role!: string;
   public root!: string;
+  //public picture!: string
 }
-
-
 
 Usuario.init(
   {
@@ -33,6 +32,11 @@ Usuario.init(
       allowNull: false,
       unique: true,
     }, 
+    /*picture: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      unique: true
+    },*/
     role: {
       type: DataTypes.STRING,
       defaultValue: 'user'
