@@ -1,11 +1,5 @@
-import {  getGoogleOAuthTokens } from "../../service/user.service"
+import {  getGoogleUser, getGoogleOAuthTokens } from "../../service/user.service"
 import { Request, Response } from "express"
-
-interface UpdateUserOptions {
-    name?: string;
-    email?: string;
-    picture?: string;
-  }
 
 export async function googleOAuthHandler (req: Request, res: Response){
     try {
@@ -19,14 +13,17 @@ export async function googleOAuthHandler (req: Request, res: Response){
         console.log({ id_token, access_token })
         
         // GET USER W TOKENS
-        //const googleUser = await getGoogleUser(id_token, access_token)
+        const googleUser = await getGoogleUser({ id_token, access_token })
 
         // UPSERT THE USER
-        /*if(!googleUser.verified_email) {
+        if (!googleUser.verified_email) {
             return res.status(403).send("Google account not verified.")
+        } else {
+            console.log(googleUser)
+            return res.status(200).send("Google account verified.")
         }
 
-        const updateUser: UpdateUserOptions = {
+        /*const updateUser: UpdateUserOptions = {
             email: googleUser.email,
             name: googleUser.name,
             picture: googleUser.picture,
@@ -44,10 +41,14 @@ export async function googleOAuthHandler (req: Request, res: Response){
         )
          */
 
-        //CREATE SESSION
+        // CREATE SESSION
+
         // CREACE ACCESs & REFRESH TOKENS
+
         // SET COOKIES
+
         // REDIRECT TO THE CLIENT
+
     } catch (error:any) {
         console.log('ERROR DESDE SESSION.CONTROLLER', error)
     }

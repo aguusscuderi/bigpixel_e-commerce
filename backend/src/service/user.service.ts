@@ -48,18 +48,19 @@ export async function getGoogleOAuthTokens ({code}:{code: string}): Promise<Goog
 
 }
 
-/*export async function getGoogleUser ({ id_token, access_token }): Promise<GoogleUser> {
-try {
-    const res = await axios.get<GoogleUser>(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${access_token}`, {
-        headers:{
-            authorization: `Bearer ${id_token}`
-        }
-    })
-    return res.data
-} catch (error: any) {
-    console.log(error, 'Error en GoogleGetUser.')
+export async function getGoogleUser ({ id_token, access_token }: { id_token: string, access_token: string }): Promise<GoogleUser> {
+    try {
+        const res = await axios.get<GoogleUser>(`https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${access_token}`, {
+            headers:{
+                authorization: `Bearer ${id_token}`
+            }
+        })
+        return res.data
+    } catch (error: any) {
+        console.log(error, 'Error en GoogleGetUser.')
+        throw new Error(error.message)
+    }
 }
-}*/
 
 /*export async function findAndUpdateUser (
     query: Model<Usuario>,
