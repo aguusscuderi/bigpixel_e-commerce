@@ -19,10 +19,9 @@ Products.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    catetegorias: {
+    categorias: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
     precio: {
         type: DataTypes.INTEGER,
@@ -33,14 +32,5 @@ Products.init(
     modelName: 'products', // Nombre de la tabla en la base de datos
   }
 );
-
-// Sincroniza el modelo con la base de datos para crear la tabla
-// Usuario.sync()
-//   .then(() => {
-//     console.log('Tabla "users" creada exitosamente');
-//   })
-//   .catch((error) => {
-//     console.error('Error al crear la tabla:', error);
-//   });
 
 export default Products

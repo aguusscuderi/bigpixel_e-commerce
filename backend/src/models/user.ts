@@ -8,7 +8,6 @@ class Usuario extends Model {
   public password!: string;
   public role!: string;
   public root!: string;
-  //public picture!: string
 }
 
 Usuario.init(
@@ -32,11 +31,6 @@ Usuario.init(
       allowNull: false,
       unique: true,
     }, 
-    /*picture: {
-      type: DataTypes.STRING,
-      allowNull: true,
-      unique: true
-    },*/
     role: {
       type: DataTypes.STRING,
       defaultValue: 'user'
@@ -51,14 +45,5 @@ Usuario.init(
     modelName: 'users', // Nombre de la tabla en la base de datos
   }
 );
-
-// Sincroniza el modelo con la base de datos para crear la tabla
-// Usuario.sync()
-//   .then(() => {
-//     console.log('Tabla "users" creada exitosamente');
-//   })
-//   .catch((error) => {
-//     console.error('Error al crear la tabla:', error);
-//   });
 
 export default Usuario
