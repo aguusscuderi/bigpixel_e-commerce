@@ -1,28 +1,11 @@
 import { Router, Request, Response } from 'express';
 import Products from '../../models/products';
+import arrProducts from '../../models/mocks/products.mocks'
 
 const router = Router();
 
 router.post('/add', async (req: Request, res: Response) => {
   try {
-    const arrProducts = [
-      {
-        nombre: 'Producto 1',
-        categorias: 'Categoría 1',
-        precio: 10,
-      },
-      {
-        nombre: 'Producto 2',
-        categorias: 'Categoría 2',
-        precio: 20,
-      },
-      {
-        nombre: 'Producto 3',
-        categorias: 'Categoría 3',
-        precio: 30,
-      },
-    ];
-
     const productSaved = await Products.bulkCreate(arrProducts);
 
     res.json({
@@ -35,10 +18,17 @@ router.post('/add', async (req: Request, res: Response) => {
   }
 });
 
-router.get('/all', (req: Request, res: Response) => {
-  // Aquí puedes escribir la lógica para obtener todos los productos de la base de datos
-  // Por ahora, simplemente enviamos un mensaje de prueba
-  res.send('Productos encontrados');
+router.get('/all', async (req: Request, res: Response) => {
+  try {
+    // Consulta todos los productos desde la base de datos
+    const products = await Products.findAll();
+
+    // Envía los productos como respuesta
+    res.json(products);
+  } catch (error) {
+    console.error('Error al obtener los productos:', error);
+    res.status(500).json({ error: 'Error al obtener los productos' });
+  }
 });
 
 // update 
