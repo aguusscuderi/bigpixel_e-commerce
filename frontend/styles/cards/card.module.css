@@ -1,0 +1,91 @@
+.card{
+    width: 215px;
+    border: 1px solid #d8d8d8;
+    border-radius: .55rem;
+    position: relative;
+    margin: 0.5rem;
+    padding: 0rem;
+    overflow: hidden;
+    /* Shadow Effect */
+    transition: .1s;
+    box-shadow: 2px 2px 2px 2px rgb(0 0 0 / 10%);
+    /* background-color: red; */
+}
+
+.cardImages {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.card:hover{
+    box-shadow: 1px 1px 2px rgb(0 0 0 / 20%)
+}
+
+.title{
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    margin-left: 0.6rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.subtitle{
+    margin-top: 0rem;
+    margin-left: 1rem;
+    word-wrap: break-word;
+    text-align: justify;
+    width: 12rem;
+    height: 2rem;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.price{
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+     margin: 8px;
+}
+
+.buttonSection{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(231, 228, 228);
+    padding: 5px;
+}
+
+/* Estilos boton COMPRAR */
+
+.btnBuy {
+    background: none;
+    color: inherit;
+    cursor: pointer;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btnBuy:hover {
+    background-color: rgb(192, 189, 189);
+    border-radius: 0.55rem;
+}
+
+/* Estilos de los botones para aumentar y disminuir cantidad */
+
+.btnQuantity{
+    border: none;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.btnQuantity:hover {
+    background-color: rgb(192, 189, 189);
+    border-radius: 0.55rem;
+}
+
+/* Estilos caja de botones seleccion cantidad */
+/*
+.quantitySelection{
+    border: 1px solid red;
+} */
