@@ -3,19 +3,20 @@ const router = Router()
 
 import register from '../auth/register'
 import login from '../auth/login'
-import Products from '../models/products';
-import productsRouter from '../controllers/products/products.controller';
+import { addProducts, readProducts } from '../controllers/products/products.controller'
+
 
 import { googleOAuthHandler }  from '../controllers/auth/session.controller'
 
  export default function serverRouter(app: Express) {
     app.use('/api', router)
-    app.use('/api/products', productsRouter);
     
     // GETS:
     router.get('/sessions/oauth/google', googleOAuthHandler)
-    
+    router.get('/products', (req: Request, res: Response) => { readProducts (req, res) })
+
     // POSTS: 
+    router.post('/products/add', (req: Request, res: Response) => { addProducts (req, res) })
     router.post('/login', (req: Request, res: Response) => { login(req, res) })
     router.post('/register', (req: Request, res: Response) => { register(req, res) })
 
