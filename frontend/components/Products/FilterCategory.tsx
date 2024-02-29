@@ -7,20 +7,26 @@ import filterSearch from "./filterSearch";
 import { actionCreators, State } from '../../global/store'
 import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const FilterCategory = () => {
-//   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { categoryFilter } = bindActionCreators(actionCreators, dispatch);
   const category = useSelector((state: State) => state.filter.category);
 
   const categories = ["Perro", "Gato"];
-//   const router = {query: '1', path: '/'}
+  const navigate = useNavigate();
+
+  const handleFilterChange = (value: string) => {
+    categoryFilter(value);
+  };
 
   useEffect(() => {
-    filterSearch({ category });
-  }, [category]);
+    const path = "/"; // Definir tu ruta adecuada aquí
+    const query = {}; // Puedes agregar parámetros iniciales aquí si es necesario
+    const fullPath = filterSearch({ path, query, category });
+    navigate(fullPath, { replace: true });
+  }, [category, navigate]);
 
   return (
     <div>
@@ -31,7 +37,7 @@ const FilterCategory = () => {
           id="demo-simple-select"
           value={category}
           label="Categoria"
-          onChange={(e) => categoryFilter(e.target.value)}
+          onChange={(e) => handleFilterChange(e.target.value)}
         >
           <MenuItem value="all">Todos los productos</MenuItem>
           {categories.map((item, index) => (
