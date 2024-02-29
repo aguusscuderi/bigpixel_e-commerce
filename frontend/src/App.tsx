@@ -9,6 +9,7 @@ import {PersistGate} from 'redux-persist/integration/react'
 import Index from '../pages/index'
 import Signin from '../pages/signin'
 import ProductsView from '../pages/products'
+import ProductDetails from '../pages/products/index'
 
 function App() {
   return (
@@ -17,9 +18,10 @@ function App() {
       <PersistGate persistor={persist}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index></Index>}></Route>
-            <Route path="/signin" element={<Signin></Signin>}></Route>
-            <Route path="/productos" element={<ProductsView></ProductsView>}></Route>
+            <Route path="/" element={<Index/>}></Route>
+            <Route path="/signin" element={<Signin/>}></Route>
+            <Route path="/productos" element={<ProductsView/>}></Route>
+            <Route path="/products/:id" element={<ProductDetails />} />
           </Routes>
         </BrowserRouter>
       </PersistGate>

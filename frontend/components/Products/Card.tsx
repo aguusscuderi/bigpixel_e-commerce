@@ -1,6 +1,7 @@
-import  '../../styles/cards/card.module.css'
+import  '../../styles/cards/card.css'
 import { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
+import ProductImage from './ProductImage'
 // import { useShoppingCart } from '../contexts/cartContext'
 // import React from 'react';
 // import {useDispatch, useSelector} from 'react-redux'
@@ -42,7 +43,7 @@ const Card = (props: CardProps) => {
     return(
         <div className='card'>
             <div className='cardImages'>
-            {/* <Image onClick={() => router.push(`/products/${props.id}`) } src={props.imageSource} alt='name' width={200} height={200}/> */}
+                <ProductImage {...props}/>
             </div>
             <h4 className='title'>{props.title}</h4>
             <h6 className='subtitle'>{props.text}</h6>

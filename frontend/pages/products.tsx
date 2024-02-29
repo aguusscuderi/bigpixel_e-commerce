@@ -4,17 +4,7 @@ import NavBar from '../components/NavBar'
 import Box from "@mui/material/Box";
 import Grid from '@mui/material/Grid';
 import Card from '../components/Products/Card'
-
-interface Product {
-    id: number;
-    name: string;
-    price: number;
-    photo_url: string;
-    stock: number;
-    description: string;
-    category: string;
-    // Otros campos si los hay
-  }
+import { Product } from '../interfaces/types'
 
 const ProductsView = () => {
   // Define el estado para almacenar los productos
