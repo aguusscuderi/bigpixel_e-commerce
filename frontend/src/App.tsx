@@ -8,6 +8,7 @@ import { store, persist } from '../global/store/index'
 import {PersistGate} from 'redux-persist/integration/react'
 import Index from '../pages/index'
 import Signin from '../pages/signin'
+import ProductsView from '../pages/products'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Index></Index>}></Route>
             <Route path="/signin" element={<Signin></Signin>}></Route>
+            <Route path="/productos" element={<ProductsView></ProductsView>}></Route>
           </Routes>
         </BrowserRouter>
       </PersistGate>
