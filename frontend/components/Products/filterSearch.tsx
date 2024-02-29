@@ -1,27 +1,26 @@
 
 interface FilterProps {
-    // router: string;
-    page?: string;
-    category?: string;
-    sort?: string;
-    search?: string;
+  path: string;
+  query: { [key: string]: string };
+  page?: string;
+  category?: string;
+  sort?: string;
+  search?: string;
 }
 
-const filterSearch = ({page, category, sort, search}: FilterProps) => {
-  const path = '/';
-  const query = { category: category, page: '', search: '', sort: ''};
+const filterSearch = ({ path, query, page, category, sort, search }: FilterProps): string => {
+  const updatedQuery: Record<string, string> = { ...query };
 
-  console.log(path, query)
+  if (category) updatedQuery.category = category.toLocaleLowerCase();
+  if (page) updatedQuery.page = page;
+  if (search) updatedQuery.search = search;
+  if (sort) updatedQuery.sort = sort;
 
-  if (category) query.category = category.toLocaleLowerCase();
-  if (page) query.page = page;
-  if (search) query.search = search;
-  if (sort) query.sort = sort;
+  const queryString = new URLSearchParams(updatedQuery).toString();
 
-//   router.push({
-//     pathname: path,
-//     query: query,
-//   });
+  const fullPath = `${path}?${queryString}`;
+
+  return fullPath;
 };
 
 export default filterSearch;
