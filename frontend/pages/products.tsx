@@ -43,7 +43,7 @@ const ProductsView = () => {
             <Grid item xs={12} sm={12} md={2} lg={2}>
              <Box sx={{ flexGrow: 1, p: 2, border: '1px dashed grey'}}>
               <Grid mt={6}>
-              <FilterCategory/>
+              {/* <FilterCategory/> */}
               </Grid>
              </Box>
             </Grid>

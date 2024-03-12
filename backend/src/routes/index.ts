@@ -1,7 +1,7 @@
 import { Express, Router, Request, Response } from 'express';
 const router = Router()
 
-import register from '../auth/register'
+import { register/*, verifyAccount*/} from '../auth/register'
 import login from '../auth/login'
 import { addProducts, readProducts } from '../controllers/products/products.controller'
 
@@ -13,7 +13,8 @@ import { googleOAuthHandler }  from '../controllers/auth/session.controller'
     
     // GETS:
     router.get('/sessions/oauth/google', googleOAuthHandler)
-    router.get('/products', (req: Request, res: Response) => { readProducts (req, res) })
+    router.get('/products/all', (req: Request, res: Response) => { readProducts (req, res) })
+    // router.get('/user/confirm/:token', (req: Request, res: Response) => { verifyAccount(req, res) }) 
 
     // POSTS: 
     router.post('/products/add', (req: Request, res: Response) => { addProducts (req, res) })
