@@ -11,20 +11,24 @@ interface Usuario {
   }
 
 const mail = {
-    user: process.env.NOEDEMAILER_EMAIL,
-    password: process.env.NOEDEMAILER_PASSWORD
+    user: 'bigpixel.software@gmail.com'/*process.env.NODEMAILER_EMAIL*/ ,
+    pass: 'kbzl zhdi ntsc bmxn'/*process.env.NODEMAILER_PASSWORD*/ 
 }
+
+console.log(mail, 'Este es el MAIL DE ENVIo.')
+
+
 
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
-  port: 587,
+  port: 465,
   tls: {
     rejectUnauthorized: false
   },
-  secure: false, // Use `true` for port 465, `false` for all other ports
+  secure: true, // Use `true` for port 465, `false` for all other ports
   auth: {
     user: mail.user,
-    pass: mail.password,
+    pass: mail.pass,
   },
 });
 

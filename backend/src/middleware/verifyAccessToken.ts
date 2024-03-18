@@ -12,7 +12,7 @@ interface User {
     root: string
   }  
 
-const authByHeader = async (req: Request, res: Response) => {
+export const authByHeader = async (req: Request, res: Response) => {
     const token = req.headers.authorization;
     if(!token) return res.status(400).send({err: 'Invalid Authentication'})
 
@@ -27,7 +27,7 @@ const authByHeader = async (req: Request, res: Response) => {
         return {id: user.id, role: user.role, root: user.root};
 }
 
-const authByParams = async (token: string) => {
+export const authByParams = async (token: string) => {
     let verifiedData = null
     const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET as string) as JwtPayload
     if(!decoded) 
@@ -37,6 +37,3 @@ const authByParams = async (token: string) => {
 
     return verifiedData
 }
-
-
-export default { authByHeader, authByParams }
