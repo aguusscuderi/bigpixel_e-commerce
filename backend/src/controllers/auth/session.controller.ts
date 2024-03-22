@@ -1,4 +1,4 @@
-import {  getGoogleUser, getGoogleOAuthTokens/*, findAndUpdateUser*/ } from "../../service/user.service"
+import {  getGoogleUser, getGoogleOAuthTokens, findAndUpdateUser } from "../../service/user.service"
 import { Request, Response } from "express"
 
 
@@ -22,21 +22,18 @@ export async function googleOAuthHandler (req: Request, res: Response){
         // UPSERT THE USER
         if (!googleUser.verified_email) {
             return res.status(403).send("Google account not verified.")
-        } else {
+        } /*else {
             return res.status(200).send("Google account verified.")
-        }
+        }*/
 
-        // const user = await findAndUpdateUser({
-        //     email: googleUser.email
-        // }, {
-        //     email: googleUser.email,
-        //     name: googleUser.name,
-        //     verified: true,
-        //     source: 'google'
-        // })
-
-    
-         
+        const user = await findAndUpdateUser({
+            email: googleUser.email
+        }, {
+            email: googleUser.email,
+            name: googleUser.name,
+            verified: true,
+            source: 'google'
+        })
 
         // CREATE SESSION
 

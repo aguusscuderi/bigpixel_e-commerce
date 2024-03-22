@@ -64,25 +64,21 @@ export async function getGoogleUser ({ id_token, access_token }: { id_token: str
     }
 }
 
-// export async function findAndUpdateUser (
-//     query: {email: string},
-//     update: {email: string, name: string, verified: boolean, source: string},
-// ) {
-//     console.log(query.email, 'QUERY EMAIL')
-
-//     const findUser = await Users.findOne({ where: { email: query.email } })
-//     if(findUser !== null) {
-//         console.log('ESTOY ALLA', findUser)
-//         return await Users.update({ update }, {
-//             where: {
-//               email: findUser.email,
-//             },
-//           });
-//     }else {
-//         console.log('ESTOY ACA')
-//         await Users.create({
-//             ...update,
-//             password: ""
-//         })
-//     }
-// }
+export async function findAndUpdateUser (
+    query: {email: string},
+    update: {email: string, name: string, verified: boolean, source: string},
+) {
+    const findUser = await Users.findOne({ where: { email: query.email } })
+    if(findUser !== null) {
+        return await Users.update({ update }, {
+            where: {
+              email: findUser.email,
+            },
+          });
+    }else {
+        return await Users.create({
+            ...update,
+            password: ""
+        })
+    }
+}

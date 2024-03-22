@@ -11,9 +11,6 @@ export const register = async (req: { body: { name: string; email: string; passw
     try {
       const { name, email, password } = req.body;
   
-      // const errMsg = valid(name, email, password, cf_password);
-      // if (errMsg) return res.status(400).json({ err: errMsg });
-  
       const user = await Users.findOne({ where: {email: email} });
       if (user) {
         console.log('El usuario ya existe.')
@@ -38,7 +35,7 @@ export const register = async (req: { body: { name: string; email: string; passw
         }
         const token = createAccessToken(newUserID)
         const template = getTemplate(newUser, token)
-        await sendEmail(email, 'Este es un email de prueba', template)
+        await sendEmail(email, 'VERIFICA TU CORREO', template)
       } else {
         console.log('User not found.');
       }
