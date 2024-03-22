@@ -10,7 +10,7 @@ interface User {
     role: string
     verified: boolean
     root: string
-  }  
+}  
 
 export const authByHeader = async (req: Request, res: Response) => {
     const token = req.headers.authorization;

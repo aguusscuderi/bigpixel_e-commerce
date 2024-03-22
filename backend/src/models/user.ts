@@ -7,6 +7,7 @@ class Usuario extends Model {
   public email!: string;
   public password!: string;
   public role!: string;
+  public source!: string;
   public verified!: boolean;
   public root!: string;
 }
@@ -39,6 +40,10 @@ Usuario.init(
     verified: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
+    },
+    source: {
+      type: DataTypes.STRING,
+      defaultValue: 'direct'
     },
     root: {
         type: DataTypes.BOOLEAN,

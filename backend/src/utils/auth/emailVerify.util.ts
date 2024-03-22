@@ -17,8 +17,6 @@ const mail = {
 
 console.log(mail, 'Este es el MAIL DE ENVIo.')
 
-
-
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,

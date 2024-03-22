@@ -5,6 +5,7 @@ import { createAccessToken } from "../utils/auth/generateToken";
 import { authByParams } from "../middleware/verifyAccessToken"
 import { sendEmail, getTemplate } from '../utils/auth/emailVerify.util'
 import { ParamsDictionary } from "express-serve-static-core";
+import { JwtPayload } from "jsonwebtoken";
 
 export const register = async (req: { body: { name: string; email: string; password: string; }; }, res: Response<any, Record<string, any>>) => {
     try {
@@ -53,24 +54,28 @@ export const register = async (req: { body: { name: string; email: string; passw
 export async function verifyAccount (req: Request<ParamsDictionary>, res: Response) {
   try {
     const { token } = req.params
-    const getUserByToken = authByParams(token)
+    const getUserByToken: JwtPayload | null | void = await authByParams(token);
+ 
+    //const getUserByToken = authByParams(token)
 
     console.log(getUserByToken, 'GET USER BY TOKEN')
 
     if (!getUserByToken) 
-      return res.json({success: false, msg: "Data error."})
+      return res.json({ success: false, msg: "Data error."})
 
-    // const { email, code } = getUserByToken.data 
+    const { id } = getUserByToken
 
-    // const user = await Users.findOne({ where: { email: email } }) || null
-    // if (user == null) 
-    //   return res.json({ success: false, msg: "User not found."})
+    console.log(getUserByToken.data, 'DATA USER TOKEN')
 
-    // if (code !== user.code) 
-    //   return res.json({ success: false, msg: "Invalid code."}) // Aca podria hacer un redirect a una vista de error.
+    const user = await Users.findOne({ where: { id: id } }) || null
+    if (user == null) 
+      return res.json({ success: false, msg: "User not found."})
 
-    // await user.update({ verified: true })
-    // await user.save()
+    /*if (id !== user.id) 
+      return res.json({ success: false, msg: "Invalid code."})*/ // Aca podria hacer un redirect a una vista de error.
+
+    await user.update({ verified: true })
+    await user.save()
     
   } catch (error) {
     console.log(error)
