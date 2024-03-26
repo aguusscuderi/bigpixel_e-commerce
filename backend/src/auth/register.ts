@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import Users from "../models/user";
 import bcrypt from "bcrypt";
-import { createAccessToken } from "../utils/auth/generateToken";
+import { createAccessToken } from "../service/auth/generateToken.service";
 import { authByParams } from "../middleware/verifyAccessToken"
-import { sendEmail, getTemplate } from '../utils/auth/emailVerify.util'
+import { sendEmail, getTemplate } from '../service/auth/emailVerify.service'
 import { ParamsDictionary } from "express-serve-static-core";
 import { JwtPayload } from "jsonwebtoken";
 

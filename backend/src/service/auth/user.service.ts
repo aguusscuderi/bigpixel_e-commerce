@@ -1,7 +1,9 @@
 import axios from 'axios'
 import qs from 'qs'
-import Users from '../models/user'
+import Users from '../../models/user'
 import { Model, InferAttributes, QueryOptions, UpdateOptions } from 'sequelize'
+
+// DIRECT:
 
 // GOOGLE:
 
@@ -66,8 +68,9 @@ export async function getGoogleUser ({ id_token, access_token }: { id_token: str
 
 export async function findAndUpdateUser (
     query: {email: string},
-    update: {email: string, name: string, verified: boolean, source: string},
+    update: { id: number, email: string, name: string, verified: boolean, source: string },
 ) {
+    console.log(update.id)
     const findUser = await Users.findOne({ where: { email: query.email } })
     if(findUser !== null) {
         return await Users.update({ update }, {

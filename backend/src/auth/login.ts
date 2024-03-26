@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import {
   createAccessToken,
   createRefreshToken
-} from "../utils/auth/generateToken";
+} from "../service/auth/generateToken.service";
 
 function isValidPswd(user: { password: string; }, pswd: string){
   return bcrypt.compare(pswd, user.password)

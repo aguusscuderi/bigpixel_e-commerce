@@ -1,12 +1,13 @@
 import { Express, Router, Request, Response } from 'express';
 const router = Router()
 
-import { register, verifyAccount} from '../auth/register'
+//Auth:
+import { register, googleOAuthHandler } from '../controllers/auth/session.controller'
+import { verifyAccount } from '../service/auth/verifyAccount.service';
 import login from '../auth/login'
+
+//Products:
 import { addProducts, readProducts } from '../controllers/products/products.controller'
-
-
-import { googleOAuthHandler }  from '../controllers/auth/session.controller'
 
  export default function serverRouter(app: Express) {
     app.use('/api', router)
@@ -22,5 +23,3 @@ import { googleOAuthHandler }  from '../controllers/auth/session.controller'
     router.post('/register', (req: Request, res: Response) => { register(req, res) })
 
 }
-
-// module.exports = serverRouter
