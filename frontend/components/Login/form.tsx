@@ -25,14 +25,14 @@ const Form = () => {
         e.preventDefault();
         const myData = await postData('login', datosLogin)
 
-        // setCookie(null, "refresh_token", myData.refresh_token, {
-        //     maxAge: 259200,
-        //     //path: 'http://localhost:4040/'
-        // })
-        // setCookie(null, "access_token", myData.access_token, {
-        //     maxAge: 259200,
-        //     //path: 'api/auth/accessToken'
-        // })
+        setCookie(null, "refresh_token", myData.refresh_token, {
+            maxAge: 259200,
+            //path: 'http://localhost:4040/'
+        })
+        setCookie(null, "access_token", myData.access_token, {
+            maxAge: 259200,
+            //path: 'api/auth/accessToken'
+        })
 
         auth(true, myData.access_token, myData.user)
 
