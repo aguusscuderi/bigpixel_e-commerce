@@ -15,8 +15,6 @@ const mail = {
     pass: 'kbzl zhdi ntsc bmxn'/*process.env.NODEMAILER_PASSWORD*/ 
 }
 
-console.log(mail, 'Este es el MAIL DE ENVIo.')
-
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,

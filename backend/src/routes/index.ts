@@ -2,9 +2,9 @@ import { Express, Router, Request, Response } from 'express';
 const router = Router()
 
 //Auth:
-import { register, googleOAuthHandler } from '../controllers/auth/session.controller'
+import { directLogin, directRegister, googleOAuthHandler } from '../controllers/auth/session.controller'
 import { verifyAccount } from '../service/auth/verifyAccount.service';
-import login from '../auth/login'
+// import login from '../auth/login'
 
 //Products:
 import { addProducts, readProducts } from '../controllers/products/products.controller'
@@ -19,7 +19,7 @@ import { addProducts, readProducts } from '../controllers/products/products.cont
 
     // POSTS: 
     router.post('/products/add', (req: Request, res: Response) => { addProducts (req, res) })
-    router.post('/login', (req: Request, res: Response) => { login(req, res) })
-    router.post('/register', (req: Request, res: Response) => { register(req, res) })
+    router.post('/login', (req: Request, res: Response) => { directLogin(req, res) })
+    router.post('/register', (req: Request, res: Response) => { directRegister(req, res) })
 
 }

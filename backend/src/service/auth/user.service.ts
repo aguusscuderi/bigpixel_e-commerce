@@ -1,9 +1,14 @@
 import axios from 'axios'
 import qs from 'qs'
 import Users from '../../models/user'
-import { Model, InferAttributes, QueryOptions, UpdateOptions } from 'sequelize'
+import bcrypt from "bcrypt";
 
 // DIRECT:
+
+export async function isValidPswd(user: { password: string; }, pswd: string){
+    return await bcrypt.compare(pswd, user.password)
+  }
+  
 
 // GOOGLE:
 
