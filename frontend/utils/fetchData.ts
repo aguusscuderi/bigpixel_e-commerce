@@ -16,7 +16,7 @@ const baseUrl = config.SERVER_ROOT
 //   return data
 // }
 
-// export const getData = async (url, token?) => {
+// export const getData = async (url:string, token?: string) => {
 //   const res = await fetch(`${baseUrl}/api/${url}`, {
 //     method: 'GET',
 //     headers: {

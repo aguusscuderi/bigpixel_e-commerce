@@ -4,6 +4,7 @@ const router = Router()
 //Auth:
 import { directLogin, directRegister, googleOAuthHandler } from '../controllers/auth/session.controller'
 import { verifyAccount } from '../service/auth/verifyAccount.service';
+import { getProducts } from '../service/filter/filter.service';
 // import login from '../auth/login'
 
 //Products:
@@ -14,7 +15,8 @@ import { addProducts, readProducts } from '../controllers/products/products.cont
     
     // GETS:
     router.get('/sessions/oauth/google', googleOAuthHandler)
-    router.get('/products/all', (req: Request, res: Response) => { readProducts (req, res) })
+    router.get('/products', getProducts)
+    // router.get('/products/all', (req: Request, res: Response) => { readProducts (req, res) })
     router.get('/user/confirm/:token', (req: Request, res: Response) => { verifyAccount(req, res) }) 
 
     // POSTS: 

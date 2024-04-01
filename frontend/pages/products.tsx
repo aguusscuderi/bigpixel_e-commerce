@@ -1,24 +1,34 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+// import { getData } from '../utils/fetchData';
+import { useLocation } from 'react-router-dom';
 import NavBar from '../components/NavBar' 
 import Box from "@mui/material/Box";
 import Grid from '@mui/material/Grid';
 import Card from '../components/Products/Card'
+import { Filter } from '../components/Products/Filter';
 import { Product } from '../interfaces/types'
-import FilterCategory from '../components/Products/FilterCategory'
+
 
 const ProductsView = () => {
+  const location = useLocation()
+  const { search } = location
+  console.log(location, 'DESDE PRODUCTS:')
   // Define el estado para almacenar los productos
   const [products, setProducts] = useState<Product[]>([]);
 
   function capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
   // Utiliza useEffect para realizar la solicitud al cargar el componente
   useEffect(() => {
+
     const fetchProducts = async () => {
       try {
-        const response = await axios.get<Product[]>('http://localhost:4040/api/products/all');
+        // const response = await getData(`products?title=${search ? search : "all"}&category=${category ? category : "all"}`)
+        // const response = await getData(`products?title=${search ? search : "all"}`)
+        const response = await axios.get<Product[]>(`http://localhost:4040/api/products${search}`);
         const productsData = response.data;
         console.log('PRODUCTS DATA: ', productsData)
         setProducts(productsData);
@@ -30,7 +40,7 @@ const ProductsView = () => {
 
     // Llama a la función para obtener los productos cuando se monta el componente
     fetchProducts();
-  }, []); // El segundo argumento vacío [] significa que este efecto se ejecuta solo una vez al montar el componente
+  }, [search]); // El segundo argumento vacío [] significa que este efecto se ejecuta solo una vez al montar el componente
 
 
     return (
@@ -51,7 +61,7 @@ const ProductsView = () => {
               <Box sx={{ flexGrow: 1, p: 2, border: '1px dashed grey'}}>
                 <Grid container spacing={2} mt={4} alignItems='center' justifyContent='center'>
                   <Grid item xs={12} sm={12} md={8} lg={7}>
-                  {/* <Filter/> */}
+                  <Filter/>
                   </Grid>
                   <Grid item xs={12} sm={12} md={4} lg={3}>
                   {/* <FilterOrder/> */}
