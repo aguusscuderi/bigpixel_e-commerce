@@ -1,6 +1,6 @@
 import Products from "../../models/products";
-import { QueryTypes } from "sequelize";
 import { Request, Response } from "express";
+import { Op } from 'sequelize';
 
 class APIfeatures {
     query: any
@@ -13,21 +13,14 @@ class APIfeatures {
     
     async filtering(){
         const queryObj = {...this.queryString}
-        let result: any = []
-        // const excludeFields = ['page', 'sort', 'limit']
-        // excludeFields.forEach(el => delete(queryObj[el]))
+        let filterQuery: any = {};
 
         if(queryObj.category && queryObj.category !== 'all')
-            // this.query.findAll({category: queryObj.category})
-            result = await this.query.findAll({where: {category: queryObj.category}})
+            filterQuery.category = queryObj.category;
         if(queryObj.name && queryObj.name !== 'all')
-            // this.query.find({name: {$regex: queryObj.name}})
-            result = await this.query.findAll({where: {name: queryObj.name}})
+            filterQuery.name = { [Op.iLike]: `%${queryObj.name}%` };
 
-        result = await this.query.findAll()
-
-        // console.log(result)
-        
+        const result = await this.query.findAll({ where: filterQuery });
         return result;
     }
 
@@ -53,12 +46,8 @@ class APIfeatures {
 
 export const getProducts = async (req: Request, res: Response) => {
     try {
-        console.log('EJECUTANDO FUNCION GET PRODUCTS, BACKEND.', req.query)
-
         const features = new APIfeatures(Products, req.query)
         const filteredProducts = await features.filtering()
-
-        console.log(filteredProducts)
 
         res.json(filteredProducts)
 
