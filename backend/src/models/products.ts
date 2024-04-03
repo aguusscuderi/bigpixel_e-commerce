@@ -6,6 +6,7 @@ class Products extends Model {
   public nombre!: string;
   public categorias!: string;
   public precio!: string;
+    static find: any;
 }
 
 Products.init(

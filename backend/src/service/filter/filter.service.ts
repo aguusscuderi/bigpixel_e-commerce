@@ -11,19 +11,24 @@ class APIfeatures {
     }
 
     
-    filtering(){
+    async filtering(){
         const queryObj = {...this.queryString}
-
+        let result: any = []
         // const excludeFields = ['page', 'sort', 'limit']
         // excludeFields.forEach(el => delete(queryObj[el]))
 
         if(queryObj.category && queryObj.category !== 'all')
-            this.query.find({category: queryObj.category})
-        if(queryObj.title && queryObj.title !== 'all')
-            this.query.find({name: {$regex: queryObj.name}})
+            // this.query.findAll({category: queryObj.category})
+            result = await this.query.findAll({where: {category: queryObj.category}})
+        if(queryObj.name && queryObj.name !== 'all')
+            // this.query.find({name: {$regex: queryObj.name}})
+            result = await this.query.findAll({where: {name: queryObj.name}})
 
-        this.query.find()
-        return this;
+        result = await this.query.findAll()
+
+        // console.log(result)
+        
+        return result;
     }
 
     sorting(){
@@ -48,16 +53,21 @@ class APIfeatures {
 
 export const getProducts = async (req: Request, res: Response) => {
     try {
-        const features = new APIfeatures(Products.findAll(), req.query).filtering()
-        const products = await features.query
+        console.log('EJECUTANDO FUNCION GET PRODUCTS, BACKEND.', req.query)
 
-        console.log('PRODUCTS:', products)
+        const features = new APIfeatures(Products, req.query)
+        const filteredProducts = await features.filtering()
 
-        res.json({
-            status: 'success',
-            result: products.length,
-            products
-        })
+        console.log(filteredProducts)
+
+        res.json(filteredProducts)
+
+        // res.json({
+        //     status: 'success',
+        //     result: filteredProducts.length,
+        //     products: filteredProducts
+        // })
+
     } catch (err) {
         return res.status(500).json({err: err})
     }

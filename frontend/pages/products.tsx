@@ -9,36 +9,37 @@ import Card from '../components/Products/Card'
 import { Filter } from '../components/Products/Filter';
 import { Product } from '../interfaces/types'
 
+// interface databaseProductsResult {
+//   result: number,
+//   products: [],
+//   status: string
+// }
 
 const ProductsView = () => {
   const location = useLocation()
   const { search } = location
-  console.log(location, 'DESDE PRODUCTS:')
-  // Define el estado para almacenar los productos
+
   const [products, setProducts] = useState<Product[]>([]);
 
   function capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+  
+  const fetchProducts = async () => {
+    try {
+      // const response = await getData(`products?title=${search ? search : "all"}&category=${category ? category : "all"}`)
+      // const response = await getData(`products?title=${search ? search : "all"}`)
+      const response = await axios.get<Product[]>(`http://localhost:4040/api/products${search}`);
+      // const response = await axios.get<Product[]>(`http://localhost:4040/api/products`);
+      const productsData = response.data;
+      console.log('PRODUCTS DATA: ', productsData)
+      setProducts(productsData);
+    } catch (error) {
+      console.error('Error al obtener los productos:', error);
+    }
+  };
 
-  // Utiliza useEffect para realizar la solicitud al cargar el componente
   useEffect(() => {
-
-    const fetchProducts = async () => {
-      try {
-        // const response = await getData(`products?title=${search ? search : "all"}&category=${category ? category : "all"}`)
-        // const response = await getData(`products?title=${search ? search : "all"}`)
-        const response = await axios.get<Product[]>(`http://localhost:4040/api/products${search}`);
-        const productsData = response.data;
-        console.log('PRODUCTS DATA: ', productsData)
-        setProducts(productsData);
-      } catch (error) {
-        console.error('Error al obtener los productos:', error);
-        // Aquí puedes manejar el error de alguna manera, como mostrando un mensaje al usuario
-      }
-    };
-
-    // Llama a la función para obtener los productos cuando se monta el componente
     fetchProducts();
   }, [search]); // El segundo argumento vacío [] significa que este efecto se ejecuta solo una vez al montar el componente
 

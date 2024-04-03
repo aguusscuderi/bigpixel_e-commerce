@@ -13,7 +13,7 @@
 //   }  
 
 // const verifyJwt = async (req: Request, res: Response) => {
-//     try {
+//     try { 
 //       const refreshToken = req.headers["x-refresh-token"]
 //       if (!refreshToken) return res.status(400).send({ err: "Please login now" });
   
