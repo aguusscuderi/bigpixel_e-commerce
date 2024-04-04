@@ -1,7 +1,7 @@
 import { ActionTypes } from '../../global/types/index'
 
 type CartItem = {
-    id: string;
+    id: number;
     title: string;
     imageSource: string;
     text: string;
@@ -16,12 +16,12 @@ type ParsedCookie = {
 
 interface AddToCart {
     type: ActionTypes.ADDTOCART,
-    payload: ({item: Omit<CartItem, 'quantityToBuy' | '...'> , count: number, id: string})
+    payload: ({item: Omit<CartItem, 'quantityToBuy' | '...'> , count: number, id: number})
 }
 
 interface RemoveFromCart {
     type: ActionTypes.REMOVEFROMCART,
-    payload: ({id: string})
+    payload: ({ id: string })
 }
 
 interface ClearCart { 

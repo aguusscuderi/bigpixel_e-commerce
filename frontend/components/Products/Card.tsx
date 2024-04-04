@@ -3,10 +3,10 @@ import { useState } from 'react';
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 import ProductImage from './ProductImage'
 // import { useShoppingCart } from '../contexts/cartContext'
-// import React from 'react';
-// import {useDispatch, useSelector} from 'react-redux'
-// import { bindActionCreators } from 'redux';
-// import { actionCreators, State } from '../global/store'
+import React from 'react';
+import {useDispatch, useSelector} from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { actionCreators, State } from '../../global/store/index'
 
 type CardProps = {
     id: number;
@@ -17,8 +17,8 @@ type CardProps = {
 };
 
 const Card = (props: CardProps) => {
-    // const dispatch = useDispatch()
-    // const { addToCart } = bindActionCreators(actionCreators, dispatch)
+    const dispatch = useDispatch()
+    const { addToCart } = bindActionCreators(actionCreators, dispatch)
 
     const [count, setCount] = useState(1)
     const [price, setPrice] = useState(props.price)
@@ -54,7 +54,7 @@ const Card = (props: CardProps) => {
                     <b>{count}</b>
                     <button className='btnQuantity' onClick={increase}><AiOutlinePlus/></button>
                 </div>
-                <button className = 'btnBuy' /*onClick={() => {addToCart(props, count, props.id), clearCard()}}*/>Agregar al carrito</button>
+                <button className = 'btnBuy' onClick={() => {addToCart(props, count, props.id)}}>Agregar al carrito</button>
             </div>
         </div>
     )

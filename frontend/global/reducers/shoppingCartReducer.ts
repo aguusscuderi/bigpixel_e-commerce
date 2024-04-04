@@ -2,7 +2,7 @@ import { Action } from "../../global/actions/shoppingCartActions";
 import { ActionTypes } from "../../global/types";
 
 type CartItem = {
-    id: string;
+    id: number;
     title: string;
     imageSource: string;
     text: string;
@@ -25,7 +25,7 @@ type CartItem = {
 
 const initialState = {
     cart: [{
-    id: "",
+    id: 0,
     title: "",
     imageSource: "",
     text: "",
@@ -46,7 +46,8 @@ const initialState = {
 export function shoppingCartReducer (state = initialState, action: Action) {
     switch (action.type){
         case ActionTypes.ADDTOCART: {
-            const isInCart = (id: string) => {
+            const isInCart = (id: number) => {
+                console.log(state.cart, 'Desde la funcion IsInCart, Reducer.')
                 const verificator = state.cart.some(el => el.id === id)
                 return verificator
             }

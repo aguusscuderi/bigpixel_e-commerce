@@ -6,6 +6,7 @@
 // import { State } from 'global/store'
 import { useState } from "react";
 import Modal from './popUp'
+import CartWidget from '../components/Cart/cartWidget'
 
 
 const NavBar = () => {
@@ -86,6 +87,11 @@ const NavBar = () => {
             <li className="flex__li-item">
               <a className="navLink" onClick={() => setShowModal(true)}>Inicia Sesión</a>
               <Modal show={showModal} onClose={() => handlePopUpToggle}></Modal>
+            </li>
+            <li className="flex__li-item">
+              <a className="navLink" href="/cart">
+              <CartWidget/>
+              </a>
             </li>
             {/* {
               auth.status == true && auth.user.role == "admin" ?  

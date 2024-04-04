@@ -9,9 +9,9 @@ import { AuthAction } from '../../global/actions/authActions'
 ////////////////
 
 export const addToCart = ( 
-    item: { id: string; title: string; imageSource: string; text: string; price: number},
+    item: { id: number; title: string; imageSource: string; text: string; price: number},
     count: number,
-    id: string) => {
+    id: number) => {
     return (dispatch: Dispatch<Action>) => {
         dispatch({
             type: ActionTypes.ADDTOCART,
@@ -29,7 +29,7 @@ export const getParsedCookie = (cookie: {[key: string]: string}) => {
     }
 }
 
-export const removeFromCart = (id: string) => {
+export const removeFromCart = (id: number) => {
     return (dispatch: Dispatch<Action>) => {
         dispatch({
             type: ActionTypes.REMOVEFROMCART,
