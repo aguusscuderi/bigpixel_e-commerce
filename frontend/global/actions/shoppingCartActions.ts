@@ -21,7 +21,7 @@ interface AddToCart {
 
 interface RemoveFromCart {
     type: ActionTypes.REMOVEFROMCART,
-    payload: ({ id: string })
+    payload: ({ id: number })
 }
 
 interface ClearCart { 

@@ -1,0 +1,259 @@
+.in-xl-12, .in-xl-11, .in-xl-10, .in-xl-9, .in-xl-8, .in-xl-7, .in-xl-6, .in-xl-5, .in-xl-4, .in-xl-3, .in-xl-2, .in-xl-1, .in-lg-12, .in-lg-11, .in-lg-10, .in-lg-9, .in-lg-8, .in-lg-7, .in-lg-6, .in-lg-5, .in-lg-4, .in-lg-3, .in-lg-2, .in-lg-1, .in-md-12, .in-md-11, .in-md-10, .in-md-9, .in-md-8, .in-md-7, .in-md-6, .in-md-5, .in-md-4, .in-md-3, .in-md-2, .in-md-1, .in-sm-12, .in-sm-11, .in-sm-10, .in-sm-9, .in-sm-8, .in-sm-7, .in-sm-6, .in-sm-5, .in-sm-4, .in-sm-3, .in-sm-2, .in-sm-1, .in-xs-12, .in-xs-11, .in-xs-10, .in-xs-9, .in-xs-8, .in-xs-7, .in-xs-6, .in-xs-5, .in-xs-4, .in-xs-3, .in-xs-2, .in-xs-1 {
+    float: left;
+  }
+  
+  .in-xl-12, .in-xl-11, .in-xl-10, .in-xl-9, .in-xl-8, .in-xl-7, .in-xl-6, .in-xl-5, .in-xl-4, .in-xl-3, .in-xl-2, .in-xl-1, .in-lg-12, .in-lg-11, .in-lg-10, .in-lg-9, .in-lg-8, .in-lg-7, .in-lg-6, .in-lg-5, .in-lg-4, .in-lg-3, .in-lg-2, .in-lg-1, .in-md-12, .in-md-11, .in-md-10, .in-md-9, .in-md-8, .in-md-7, .in-md-6, .in-md-5, .in-md-4, .in-md-3, .in-md-2, .in-md-1, .in-sm-12, .in-sm-11, .in-sm-10, .in-sm-9, .in-sm-8, .in-sm-7, .in-sm-6, .in-sm-5, .in-sm-4, .in-sm-3, .in-sm-2, .in-sm-1, .in-xs-12, .in-xs-11, .in-xs-10, .in-xs-9, .in-xs-8, .in-xs-7, .in-xs-6, .in-xs-5, .in-xs-4, .in-xs-3, .in-xs-2, .in-xs-1 {
+    position: relative;
+    width: 100%;
+  }
+  
+  @media only screen and (min-width: 0) {
+    .in-xs-1 {
+      flex: 0 0 8.3333333333%;
+      max-width: 8.3333333333%;
+    }
+    .in-xs-2 {
+      flex: 0 0 16.6666666667%;
+      max-width: 16.6666666667%;
+    }
+    .in-xs-3 {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+    .in-xs-4 {
+      flex: 0 0 33.3333333333%;
+      max-width: 33.3333333333%;
+    }
+    .in-xs-5 {
+      flex: 0 0 41.6666666667%;
+      max-width: 41.6666666667%;
+    }
+    .in-xs-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    .in-xs-7 {
+      flex: 0 0 58.3333333333%;
+      max-width: 58.3333333333%;
+    }
+    .in-xs-8 {
+      flex: 0 0 66.6666666667%;
+      max-width: 66.6666666667%;
+    }
+    .in-xs-9 {
+      flex: 0 0 75%;
+      max-width: 75%;
+    }
+    .in-xs-10 {
+      flex: 0 0 83.3333333333%;
+      max-width: 83.3333333333%;
+    }
+    .in-xs-11 {
+      flex: 0 0 91.6666666667%;
+      max-width: 91.6666666667%;
+    }
+    .in-xs-12 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  @media only screen and (min-width: 576px) {
+    .in-sm-1 {
+      flex: 0 0 8.3333333333%;
+      max-width: 8.3333333333%;
+    }
+    .in-sm-2 {
+      flex: 0 0 16.6666666667%;
+      max-width: 16.6666666667%;
+    }
+    .in-sm-3 {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+    .in-sm-4 {
+      flex: 0 0 33.3333333333%;
+      max-width: 33.3333333333%;
+    }
+    .in-sm-5 {
+      flex: 0 0 41.6666666667%;
+      max-width: 41.6666666667%;
+    }
+    .in-sm-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    .in-sm-7 {
+      flex: 0 0 58.3333333333%;
+      max-width: 58.3333333333%;
+    }
+    .in-sm-8 {
+      flex: 0 0 66.6666666667%;
+      max-width: 66.6666666667%;
+    }
+    .in-sm-9 {
+      flex: 0 0 75%;
+      max-width: 75%;
+    }
+    .in-sm-10 {
+      flex: 0 0 83.3333333333%;
+      max-width: 83.3333333333%;
+    }
+    .in-sm-11 {
+      flex: 0 0 91.6666666667%;
+      max-width: 91.6666666667%;
+    }
+    .in-sm-12 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    .in-md-1 {
+      flex: 0 0 8.3333333333%;
+      max-width: 8.3333333333%;
+    }
+    .in-md-2 {
+      flex: 0 0 16.6666666667%;
+      max-width: 16.6666666667%;
+    }
+    .in-md-3 {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+    .in-md-4 {
+      flex: 0 0 33.3333333333%;
+      max-width: 33.3333333333%;
+    }
+    .in-md-5 {
+      flex: 0 0 41.6666666667%;
+      max-width: 41.6666666667%;
+    }
+    .in-md-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    .in-md-7 {
+      flex: 0 0 58.3333333333%;
+      max-width: 58.3333333333%;
+    }
+    .in-md-8 {
+      flex: 0 0 66.6666666667%;
+      max-width: 66.6666666667%;
+    }
+    .in-md-9 {
+      flex: 0 0 75%;
+      max-width: 75%;
+    }
+    .in-md-10 {
+      flex: 0 0 83.3333333333%;
+      max-width: 83.3333333333%;
+    }
+    .in-md-11 {
+      flex: 0 0 91.6666666667%;
+      max-width: 91.6666666667%;
+    }
+    .in-md-12 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  @media only screen and (min-width: 992px) {
+    .in-lg-1 {
+      flex: 0 0 8.3333333333%;
+      max-width: 8.3333333333%;
+    }
+    .in-lg-2 {
+      flex: 0 0 16.6666666667%;
+      max-width: 16.6666666667%;
+    }
+    .in-lg-3 {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+    .in-lg-4 {
+      flex: 0 0 33.3333333333%;
+      max-width: 33.3333333333%;
+    }
+    .in-lg-5 {
+      flex: 0 0 41.6666666667%;
+      max-width: 41.6666666667%;
+    }
+    .in-lg-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    .in-lg-7 {
+      flex: 0 0 58.3333333333%;
+      max-width: 58.3333333333%;
+    }
+    .in-lg-8 {
+      flex: 0 0 66.6666666667%;
+      max-width: 66.6666666667%;
+    }
+    .in-lg-9 {
+      flex: 0 0 75%;
+      max-width: 75%;
+    }
+    .in-lg-10 {
+      flex: 0 0 83.3333333333%;
+      max-width: 83.3333333333%;
+    }
+    .in-lg-11 {
+      flex: 0 0 91.6666666667%;
+      max-width: 91.6666666667%;
+    }
+    .in-lg-12 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+  @media only screen and (min-width: 1200px) {
+    .in-xl-1 {
+      flex: 0 0 8.3333333333%;
+      max-width: 8.3333333333%;
+    }
+    .in-xl-2 {
+      flex: 0 0 16.6666666667%;
+      max-width: 16.6666666667%;
+    }
+    .in-xl-3 {
+      flex: 0 0 25%;
+      max-width: 25%;
+    }
+    .in-xl-4 {
+      flex: 0 0 33.3333333333%;
+      max-width: 33.3333333333%;
+    }
+    .in-xl-5 {
+      flex: 0 0 41.6666666667%;
+      max-width: 41.6666666667%;
+    }
+    .in-xl-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    .in-xl-7 {
+      flex: 0 0 58.3333333333%;
+      max-width: 58.3333333333%;
+    }
+    .in-xl-8 {
+      flex: 0 0 66.6666666667%;
+      max-width: 66.6666666667%;
+    }
+    .in-xl-9 {
+      flex: 0 0 75%;
+      max-width: 75%;
+    }
+    .in-xl-10 {
+      flex: 0 0 83.3333333333%;
+      max-width: 83.3333333333%;
+    }
+    .in-xl-11 {
+      flex: 0 0 91.6666666667%;
+      max-width: 91.6666666667%;
+    }
+    .in-xl-12 {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }

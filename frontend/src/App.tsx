@@ -10,6 +10,7 @@ import Index from '../pages/index'
 import Signin from '../pages/signin'
 import ProductsView from '../pages/products'
 import ProductDetails from '../pages/products/index'
+import Cart from '../pages/cart'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/signin" element={<Signin/>}></Route>
             <Route path="/productos" element={<ProductsView/>}></Route>
             <Route path="/products/:id" element={<ProductDetails />} />
+            <Route path="/cart" element={<Cart/>} />
           </Routes>
         </BrowserRouter>
       </PersistGate>

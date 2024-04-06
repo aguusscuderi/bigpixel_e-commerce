@@ -48,7 +48,7 @@ export function shoppingCartReducer (state = initialState, action: Action) {
         case ActionTypes.ADDTOCART: {
             const isInCart = (id: number) => {
                 console.log(state.cart, 'Desde la funcion IsInCart, Reducer.')
-                const verificator = state.cart.some(el => el.id === id)
+                const verificator = state.cart.length >= 1 ? state.cart.some(el => el.id === id) : ''
                 return verificator
             }
             return ((isInCart(action.payload.id) && action.payload.id != null)  ? {
