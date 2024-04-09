@@ -5,6 +5,7 @@ const router = Router()
 import { directLogin, directRegister, googleOAuthHandler } from '../controllers/auth/session.controller'
 import { verifyAccount } from '../service/auth/verifyAccount.service';
 import { getProducts } from '../service/filter/filter.service';
+import { authByHeader } from '../middleware/verifyAccessToken';
 // import login from '../auth/login'
 
 //Products:
@@ -23,5 +24,6 @@ import { addProducts, readProducts } from '../controllers/products/products.cont
     router.post('/products/add', (req: Request, res: Response) => { addProducts (req, res) })
     router.post('/login', (req: Request, res: Response) => { directLogin(req, res) })
     router.post('/register', (req: Request, res: Response) => { directRegister(req, res) })
+    router.post('/verifyToken', (req: Request, res: Response) => { authByHeader(req, res) })
 
 }

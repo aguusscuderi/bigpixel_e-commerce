@@ -14,17 +14,22 @@ interface User {
 
 export const authByHeader = async (req: Request, res: Response) => {
     const token = req.headers.authorization;
-    if(!token) return res.status(400).send({err: 'Invalid Authentication'})
+    if (!token) return res.status(400).send({ err: 'Invalid Authentication' });
+    
+    try {
+        const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET as string) as JwtPayload;
+        if (!decoded) return res.status(400).send({ err: 'Invalid Authentication' });
 
-    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET as string) as JwtPayload
-    if(!decoded) return res.status(400).send({err: 'Invalid Authentication'})
+        const user: User | null = await Users.findOne({ where: { id: decoded.id } });
 
-    const user: User | null = await Users.findOne({ where: { id: decoded.id } })
-
-    if (!user) 
-        return res.status(404).send({ err: 'User not found' });
-    else
-        return {id: user.id, role: user.role, root: user.root};
+        if (!user)
+            return res.status(404).send({ err: 'User not found' });
+        else
+            return res.status(200).json({ id: user.id, role: user.role, root: user.root });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send({ err: 'Internal Server Error' });
+    }
 }
 
 export const authByParams = async (token: string) => {

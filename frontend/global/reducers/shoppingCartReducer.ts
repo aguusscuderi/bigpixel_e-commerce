@@ -1,66 +1,43 @@
 import { Action } from "../../global/actions/shoppingCartActions";
 import { ActionTypes } from "../../global/types";
 
-type CartItem = {
+interface Product {
     id: number;
     title: string;
     imageSource: string;
     text: string;
     price: number;
-    quantityToBuy: number
+    quantityToBuy: number;
 }
 
-//NO SE SI ESTO ESTA BIEN
-// const initialState = {
-//     cart: [{
-//     id: null,
-//     title: null,
-//     imageSource: null,
-//     text: null,
-//     price: null,
-//     quantityToBuy: 0
-//     }],
-//     cartCount: 0
-// }
+interface ShoppingCartState {
+    cart: Product[];
+    cartCount: number;
+}
 
-const initialState = {
-    cart: [{
-    id: 0,
-    title: "",
-    imageSource: "",
-    text: "",
-    price: 0,
-    quantityToBuy: 0
-    }],
+const initialState: ShoppingCartState = {
+    cart: [],
     cartCount: 0
-}
+};
 
-
-
-/*type initialState = {
-    cart: CartItem[]
-    cartCount: number
-}*/
-
-
-export function shoppingCartReducer (state = initialState, action: Action) {
+export function shoppingCartReducer (state: ShoppingCartState = initialState, action: Action) {
     switch (action.type){
         case ActionTypes.ADDTOCART: {
             const isInCart = (id: number) => {
-                console.log(state.cart, 'Desde la funcion IsInCart, Reducer.')
-                const verificator = state.cart.length >= 1 ? state.cart.some(el => el.id === id) : ''
-                return verificator
-            }
-            return ((isInCart(action.payload.id) && action.payload.id != null)  ? {
+                const verificator = state.cart.length >= 1 ? state.cart.some(el => el.id === id) : '';
+                return verificator;
+            };
+            return (isInCart(action.payload.id)) ? {
                 ...state,
-                cart: state.cart.map((product) => 
-                product.id === action.payload.id ? { ...product, quantityToBuy: product.quantityToBuy + action.payload.count} : {...product}
+                cart: state.cart.map((product) =>
+                    product.id === action.payload.id ? { ...product, quantityToBuy: product.quantityToBuy + action.payload.count } : { ...product }
                 ),
                 cartCount: state.cartCount = action.payload.count + state.cartCount,
             } : {
-                cart: [...state.cart, {...action.payload.item, quantityToBuy: action.payload.count}],
+                ...state,
+                cart: [...state.cart, { ...action.payload.item, quantityToBuy: action.payload.count }],
                 cartCount: action.payload.count + state.cartCount,
-            })
+            };
         }
 
         case ActionTypes.REMOVEFROMCART: {
@@ -89,7 +66,7 @@ export function shoppingCartReducer (state = initialState, action: Action) {
      
         case ActionTypes.CLEARCART:{
             return {
-                cart: {...initialState.cart},
+                cart: [],
                 cartCount: 0
             }
         }

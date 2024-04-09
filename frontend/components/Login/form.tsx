@@ -24,6 +24,7 @@ const Form = () => {
     const handleSubmit = async (e: { preventDefault: () => void }) => {
         e.preventDefault();
         const myData = await postData('login', datosLogin)
+        console.log(myData)
 
         setCookie(null, "refresh_token", myData.refresh_token, {
             maxAge: 259200,
