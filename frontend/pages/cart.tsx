@@ -9,10 +9,12 @@ import { actionCreators } from "../global/store/";
 import {useDispatch, useSelector} from 'react-redux'
 import { FaTrash } from "react-icons/fa";
 import { useEffect } from 'react';
+import CartForm from '../components/Cart/CartForm'
 
 const Cart = () => {
 
     useEffect(() => {
+        console.log(auth, 'MI AUTH GLOBAL DESDE EL CARRITO')
         const verified = async () => {
             try {
                 const data = await verifyToken();
@@ -29,6 +31,7 @@ const Cart = () => {
     const dispatch = useDispatch()
     const { removeFromCart, clearCart} = bindActionCreators(actionCreators, dispatch)
     const cart = useSelector((state: State) => state.shoppingCart.cart)
+    const auth = useSelector((state: State) => state.auth)
     const cartPrice = cart.length >= 1 ? cart.reduce((final, item) => {return (final + (item.price * item.quantityToBuy ))}, 0) : ''
 
     return (
@@ -64,12 +67,9 @@ const Cart = () => {
             )) : ''}
                 {cart.length>=1 ? <button className="but_clearCart"> Finalizar compra. </button> : ''} 
             </div>
-            <div>
-
+            <div className="in-sm-12 in-md-4 in-lg-4">
+                <CartForm/>
             </div>
-            {/* <div className="in-sm-12 in-md-4 in-lg-4">
-               <CartFormLog finalPrice={cartPrice}/>
-            </div> */}
         </div>
         </>
     )

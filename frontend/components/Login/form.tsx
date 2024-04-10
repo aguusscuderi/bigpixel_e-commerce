@@ -48,7 +48,7 @@ const Form = () => {
             <div className="signin-inputs">
                 <input onChange={handleLoginChange} type="text" name="email" placeholder="email" required/>
                 <input onChange={handleLoginChange} type="password" name="password" placeholder="email" required/>
-                <a href="#"> <p> Forgot your password? </p> </a>
+                <a href="/password-recovery"> <p> Forgot your password? </p> </a>
                 <button className="login-button" onClick={handleSubmit}> LOGIN. </button>
             </div>
             <div className="signing-form_footer">

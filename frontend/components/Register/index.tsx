@@ -29,15 +29,6 @@ const Register = () => {
                 <input onChange={handleRegisterChange} type="password" name="password" placeholder="Password" required/>
                 <button className="login-button" onClick={handleSubmit}> REGISTER. </button>
             </div>
-            <div className="signing-form_footer">
-                <div>
-                    <p> Or connect with: Google</p>
-                </div>
-                <div>
-                    <p> New to shop? </p>
-                    <b> JOIN NOW! </b>
-                </div>
-            </div>
         </div>
     )
 }

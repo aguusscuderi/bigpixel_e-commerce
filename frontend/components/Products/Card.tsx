@@ -57,6 +57,7 @@ const Card = (props: CardProps) => {
                 <button className = 'btnBuy' onClick={() => {addToCart(props, count, props.id)}}>Agregar al carrito</button>
             </div>
         </div>
+        
     )
 }
 

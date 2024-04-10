@@ -5,7 +5,7 @@
 // import { useSelector } from "react-redux";
 // import { State } from 'global/store'
 import { useState } from "react";
-import Modal from './popUp'
+import Modal from './Auth_modal'
 import CartWidget from '../components/Cart/cartWidget'
 
 

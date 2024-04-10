@@ -1,4 +1,3 @@
-import { useLocation, useNavigate } from 'react-router-dom'; // Importa el hook useHistory de react-router-dom
 import { NavigateFunction, Location } from 'react-router-dom'; 
 
 interface FilterProps {
