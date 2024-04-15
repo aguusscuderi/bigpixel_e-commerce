@@ -7,7 +7,9 @@ import { ActionTypes } from '../../global/types/index'
 
 interface Authorization {
     type: ActionTypes.AUTH,
-    payload: ({ status: boolean, token: string, user: Record<string, unknown> })
+    payload: ({
+        status: boolean, token: string, user: Record<string, unknown> 
+})
 }
 
 export type AuthAction = Authorization

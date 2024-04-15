@@ -1,6 +1,6 @@
 import '../styles/gridSystem/gridSystem.css'
 import '../styles/cards/cartProducts.css'
-import verifyToken from '../utils/verifyToken'
+// import verifyToken from '../utils/verifyToken'
 
 import NavBar from '../components/NavBar';
 import {  State } from '../global/store'
@@ -12,27 +12,19 @@ import { useEffect } from 'react';
 import CartForm from '../components/Cart/CartForm'
 
 const Cart = () => {
-
-    useEffect(() => {
-        console.log(auth, 'MI AUTH GLOBAL DESDE EL CARRITO')
-        const verified = async () => {
-            try {
-                const data = await verifyToken();
-                if(!data) {
-                    alert('DEBES INICIAR SESION PARA PROCEDER CON TU COMPRA.')
-                }
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        verified();
-    }, [])
-
     const dispatch = useDispatch()
     const { removeFromCart, clearCart} = bindActionCreators(actionCreators, dispatch)
     const cart = useSelector((state: State) => state.shoppingCart.cart)
-    const auth = useSelector((state: State) => state.auth)
+    const auth = useSelector((state: State) => state.auth) as { status: boolean };
     const cartPrice = cart.length >= 1 ? cart.reduce((final, item) => {return (final + (item.price * item.quantityToBuy ))}, 0) : ''
+
+    
+    useEffect(() => {
+        if(auth.status === false) 
+            alert('DEBES INICIAR SESION PARA PODER REALIZAR UNA COMPRA.')
+
+        console.log(auth, 'AUTH DESDE EL CARRITO!')
+    }, [])
 
     return (
         <>  

@@ -19,7 +19,7 @@ export function authReducer (state = initialState, action: AuthAction) {
         case ActionTypes.AUTH: {
             return {
                 ...state,
-               status: true,
+               status: action.payload.status,
                user: action.payload.user,
                token: action.payload.token
             }
